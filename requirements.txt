@@ -1,0 +1,5 @@
+uvicorn
+fastapi
+global-logger
+influxdb-client[async]
+aiohttp-retry
