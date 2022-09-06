@@ -51,4 +51,4 @@ async def get_id(id_: int):
         for record in records:
             record_ = Record(*record)
             output.append(record_)
-        return {i.date.timestamp(): i.price for i in output}
+        return {i.date.timestamp() * 1000: i.price for i in output}
