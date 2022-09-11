@@ -41,7 +41,7 @@ async def get_id(id_: int):
                 f' |> range(start: -100y)' \
                 f' |> filter(fn: (r) => r["_measurement"] == "{id_}")' \
                 f' |> filter(fn: (r) => r["_field"] == "price")' \
-                f' |> aggregateWindow(every: 1d, fn: mean, createEmpty: false)'
+                f' |> aggregateWindow(every: 12h, fn: mean, createEmpty: false)'
         response = await query_api.query(query=query, org=INFLUXDB_ORG)
         # response = await query_api.query_raw(query=query, org=INFLUXDB_ORG)
 
