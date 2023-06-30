@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9-slim
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11-slim
 MAINTAINER ALERT <alexey.rubasheff@gmail.com>
 
 WORKDIR /app
