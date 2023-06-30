@@ -1,3 +1,4 @@
+import asyncio
 import os
 import json
 import pprint
@@ -40,8 +41,8 @@ async def get_values(id_: int, field: str):
 
         query_api = client.query_api()
         query = f' from(bucket:"{INFLUXDB_BUCKET}") ' \
-                f' |> range(start: -100y)' \
-                f' |> filter(fn: (r) => r["_measurement"] == "{id_}")' \
+                f' |> range(start: -3y)' \
+                f' |> filter(fn: (r) => r["id_"] == "{id_}")' \
                 f' |> filter(fn: (r) => r["_field"] == "{field}")' \
                 f' |> aggregateWindow(every: 12h, fn: mean, createEmpty: false)'
         response = await query_api.query(query=query, org=INFLUXDB_ORG)
@@ -70,7 +71,7 @@ async def get_data_by_id(id_: int):
 import "influxdata/influxdb/schema"
 from(bucket: "{INFLUXDB_BUCKET}")
     |> range(start: -3y)
-    |> filter(fn: (r) => r["_measurement"] == "{id_}")
+    |> filter(fn: (r) => r["id_"] == "{id_}")
     |> aggregateWindow(every: 12h, fn: mean, createEmpty: false)
     |> sort(columns: ["_time"])
     |> schema.fieldsAsCols()
@@ -83,7 +84,7 @@ from(bucket: "{INFLUXDB_BUCKET}")
             # response = await query_api.query_raw(query=query, org=INFLUXDB_ORG)
             # json_ = response.to_json(["_stop", "discount", "old_price", "price"])
             output = json.loads(response.to_json())
-            erase = ('result', 'table', '_measurement', '_start', '_stop')
+            erase = ('result', 'table', '_measurement', 'id_', '_start', '_stop')
             for item in output:
                 for field in erase:
                     item.pop(field, None)
@@ -109,3 +110,8 @@ async def get_price_old(id_: int):
 @app.get("/get/{id_}")
 async def get_data(id_: int):
     return await get_data_by_id(id_=id_)
+
+
+if __name__ == '__main__':
+    a = asyncio.run(get_data_by_id(100044884))
+    pass
