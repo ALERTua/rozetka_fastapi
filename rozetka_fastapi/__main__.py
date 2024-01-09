@@ -32,10 +32,9 @@ def signal_print(*args, **kwargs):
     LOG.printer('Received signal:', pprint.pformat(args), pprint.pformat(kwargs))
 
 
-signals = (signal.SIGABRT, signal.SIGBREAK, signal.SIGFPE, signal.SIGILL, signal.SIGINT, signal.SIGSEGV,
+signals = (signal.SIGABRT, signal.SIGTRAP, signal.SIGFPE, signal.SIGILL, signal.SIGINT, signal.SIGSEGV,
            signal.SIGTERM)
 for _signal in signals:
-    # noinspection PyTypeChecker
     signal.signal(_signal, signal_print)
 
 atexit.register(signal_print)
