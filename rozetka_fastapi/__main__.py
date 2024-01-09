@@ -1,15 +1,14 @@
 import asyncio
-import atexit
-import os
 import json
+import os
 import pprint
-import signal
 from collections import namedtuple
+
 from aiohttp_retry import ExponentialRetry, RetryClient
 from cashews import cache
 from fastapi import FastAPI, HTTPException, status
-from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
 from global_logger import Log
+from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
 from pydantic import BaseModel
 
 LOG = Log.get_logger()
@@ -26,18 +25,6 @@ INFLUX_KWARGS_ASYNC = dict(url=INFLUXDB_URL, token=INFLUXDB_TOKEN, org=INFLUXDB_
                            timeout=600_000, client_session_kwargs={"retry_options": ExponentialRetry(attempts=3)})
 
 Record = namedtuple("Record", ('date', 'value'))
-
-
-def signal_print(*args, **kwargs):
-    LOG.warning('Received signal:', pprint.pformat(args), pprint.pformat(kwargs))
-
-
-signals = (signal.SIGABRT, signal.SIGTRAP, signal.SIGFPE, signal.SIGILL, signal.SIGINT, signal.SIGSEGV,
-           signal.SIGTERM)
-for _signal in signals:
-    signal.signal(_signal, signal_print)
-
-atexit.register(signal_print)
 
 # @app.get("/")
 # async def root():
