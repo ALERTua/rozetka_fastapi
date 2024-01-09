@@ -1,5 +1,5 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11-slim
-MAINTAINER ALERT <alexey.rubasheff@gmail.com>
+LABEL maintainer="ALERT <alexey.rubasheff@gmail.com>"
 
 WORKDIR /app
 
