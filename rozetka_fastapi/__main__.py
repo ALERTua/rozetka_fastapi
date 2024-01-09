@@ -1,7 +1,9 @@
 import asyncio
+import atexit
 import os
 import json
 import pprint
+import signal
 from collections import namedtuple
 from aiohttp_retry import ExponentialRetry, RetryClient
 from cashews import cache
@@ -25,6 +27,18 @@ INFLUX_KWARGS_ASYNC = dict(url=INFLUXDB_URL, token=INFLUXDB_TOKEN, org=INFLUXDB_
 
 Record = namedtuple("Record", ('date', 'value'))
 
+
+def signal_print(*args, **kwargs):
+    LOG.printer('Received signal:', pprint.pformat(args), pprint.pformat(kwargs))
+
+
+signals = (signal.SIGABRT, signal.SIGBREAK, signal.SIGFPE, signal.SIGILL, signal.SIGINT, signal.SIGSEGV,
+           signal.SIGTERM)
+for _signal in signals:
+    # noinspection PyTypeChecker
+    signal.signal(_signal, signal_print)
+
+atexit.register(signal_print)
 
 # @app.get("/")
 # async def root():
