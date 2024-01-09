@@ -10,7 +10,7 @@ RUN \
 
 RUN \
     apt-get update \
-    && apt-get install -y --no-install-recommends dumb-init
+    && apt-get install -y --no-install-recommends dumb-init curl
 
 COPY entrypoint.sh /app/
 RUN chmod +x /app/entrypoint.sh
@@ -24,6 +24,10 @@ ENV LANGUAGE=en_US.UTF-8
 ENV PORT=8000
 
 EXPOSE $PORT
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
+        CMD curl localhost:${PORT}/health || exit 1
+
 
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["/app/entrypoint.sh"]
