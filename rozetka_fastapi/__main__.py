@@ -29,7 +29,7 @@ Record = namedtuple("Record", ('date', 'value'))
 
 
 def signal_print(*args, **kwargs):
-    LOG.printer('Received signal:', pprint.pformat(args), pprint.pformat(kwargs))
+    LOG.warning('Received signal:', pprint.pformat(args), pprint.pformat(kwargs))
 
 
 signals = (signal.SIGABRT, signal.SIGTRAP, signal.SIGFPE, signal.SIGILL, signal.SIGINT, signal.SIGSEGV,
