@@ -10,7 +10,7 @@ RUN \
 
 RUN \
     apt-get update \
-    && apt-get install -y --no-install-recommends dumb-init curl \
+    && apt-get install -y --no-install-recommends curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -32,5 +32,4 @@ HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
         CMD curl localhost:${PORT}/health || exit 1
 
 
-ENTRYPOINT ["dumb-init", "--"]
 CMD ["/app/entrypoint.sh"]
