@@ -19,7 +19,7 @@ INFLUXDB_URL = os.getenv('INFLUXDB_URL')
 INFLUXDB_TOKEN = os.getenv('INFLUXDB_TOKEN')
 INFLUXDB_ORG = os.getenv('INFLUXDB_ORG')
 INFLUXDB_BUCKET = os.getenv('INFLUXDB_BUCKET')
-
+REDIS_URL = os.getenv('REDIS_URL')
 INFLUX_KWARGS_ASYNC = dict(url=INFLUXDB_URL, token=INFLUXDB_TOKEN, org=INFLUXDB_ORG,
                            client_session_type=RetryClient,
                            timeout=600_000, client_session_kwargs={"retry_options": ExponentialRetry(attempts=3)})
@@ -29,6 +29,11 @@ Record = namedtuple("Record", ('date', 'value'))
 # @app.get("/")
 # async def root():
 #     return {}
+
+if REDIS_URL:
+    cache.setup(REDIS_URL)
+else:
+    cache.setup('mem://')
 
 
 @cache(ttl="12h")
