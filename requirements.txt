@@ -3,4 +3,4 @@ fastapi
 global-logger
 influxdb-client[async]
 aiohttp-retry
-cashews
+cashews[redis]
