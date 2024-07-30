@@ -28,5 +28,5 @@ repos:
     -   id: poetry-check
     -   id: poetry-lock
     -   id: poetry-install
-    -   id: poetry-export
-        args: ["-f", "requirements.txt", "--output", "requirements.txt", "--without-hashes", "--without=dev"]
+#    -   id: poetry-export
+#        args: ["-f", "requirements.txt", "--output", "requirements.txt", "--without-hashes", "--without=dev"]
