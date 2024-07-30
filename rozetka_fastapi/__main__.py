@@ -3,7 +3,6 @@ import json
 import os
 import pprint
 from typing import NamedTuple
-
 from aiohttp_retry import ExponentialRetry, RetryClient
 from cashews import cache
 
@@ -34,7 +33,11 @@ INFLUX_KWARGS_ASYNC = dict(
     client_session_kwargs={"retry_options": ExponentialRetry(attempts=3)},
 )
 
-Record = NamedTuple("Record", ("date", "value"))
+
+class Record(NamedTuple):
+    date: float
+    value: float
+
 
 if REDIS_URL:
     cache.setup(REDIS_URL)
@@ -121,6 +124,11 @@ async def get_price_old(id_: int):
 @app.get("/get/{id_}")
 async def get_data(id_: int):
     return await get_data_by_id(id_=id_)
+
+
+@app.get("/test")
+async def test_data():
+    return await get_data_by_id(id_=11172340)
 
 
 class HealthCheck(BaseModel):

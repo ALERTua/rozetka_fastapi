@@ -37,7 +37,10 @@ FROM python-base AS builder-base
 
 # gcc build-essential are for aiocsv
 RUN apt-get update \
-    && apt-get install -y curl gcc build-essential \
+    && apt-get install -y \
+    curl \
+    gcc \
+    build-essential \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -79,4 +82,5 @@ EXPOSE $PORT
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
         CMD curl localhost:${PORT}/health || exit 1
 
-ENTRYPOINT ["sh", "-c", "python -m fastapi run $SOURCE_DIR_NAME\__main__.py --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-c", "fastapi run $SOURCE_DIR_NAME\__main__.py --host 0.0.0.0 --port ${PORT:-8000}"]
+#CMD ["sh", "-c", "uvicorn $SOURCE_DIR_NAME.__main__:app --host 0.0.0.0 --port ${PORT:-8000}"]
