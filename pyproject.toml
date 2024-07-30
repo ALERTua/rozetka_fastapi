@@ -6,8 +6,19 @@ authors = ["Alexey Rubaseff <alexey.rubasheff@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
+uvicorn = "^0.30.3"
+fastapi = "^0.111.1"
+global-logger = "^0.4.2"
+influxdb-client = {extras = ["async"], version = "^1.44.0"}
+aiohttp-retry = "^2.8.3"
+cashews = {extras = ["redis"], version = "^7.1.0"}
+pydantic = "^2.8.2"
+python-dotenv = "^1.0.1"
 
+
+[tool.poetry.group.dev.dependencies]
+poetry = "^1.8.3"
 
 [build-system]
 requires = ["poetry-core"]
