@@ -1,4 +1,4 @@
-FROM python:3.12-slim as requirements-stage
+FROM python:3.11-slim AS requirements-stage
 
 WORKDIR /tmp
 
@@ -8,7 +8,7 @@ COPY ./pyproject.toml ./poetry.lock* /tmp/
 
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM tiangolo/uvicorn-gunicorn-fastapi:latest as production-stage
+FROM tiangolo/uvicorn-gunicorn-fastapi:latest AS production-stage
 LABEL maintainer="ALERT <alexey.rubasheff@gmail.com>"
 
 WORKDIR /app
