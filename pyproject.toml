@@ -6,8 +6,7 @@ authors = ["Alexey Rubaseff <alexey.rubasheff@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11.9"  # latest tiangolo/uvicorn-gunicorn-fastapi docker image
-uvicorn = "^0.30.3"
+python = "^3.12"
 fastapi = "^0.111.1"
 global_logger = "^0.4.2"
 influxdb-client = {extras = ["async"], version = "^1.44.0"}
