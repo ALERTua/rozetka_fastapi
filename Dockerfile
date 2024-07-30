@@ -79,4 +79,4 @@ EXPOSE $PORT
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
         CMD curl localhost:${PORT}/health || exit 1
 
-CMD ["sh", "-c", "python -m fastapi run $SOURCE_DIR_NAME\__main__.py --host 0.0.0.0 --port ${PORT:-8000}"]
+ENTRYPOINT ["sh", "-c", "python -m fastapi run $SOURCE_DIR_NAME\__main__.py --host 0.0.0.0 --port ${PORT:-8000}"]
