@@ -10,6 +10,10 @@ from fastapi import FastAPI, HTTPException, status
 from global_logger import Log
 from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
 from pydantic import BaseModel
+# noinspection PyPackageRequirements
+from dotenv import load_dotenv
+
+load_dotenv()
 
 LOG = Log.get_logger()
 
