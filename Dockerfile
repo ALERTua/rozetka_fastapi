@@ -1,30 +1,18 @@
-FROM python:3.11-slim AS requirements-stage
-
-WORKDIR /tmp
-
-RUN pip install poetry
-
-COPY ./pyproject.toml ./poetry.lock* /tmp/
-
-RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
-
-FROM tiangolo/uvicorn-gunicorn-fastapi:latest AS production-stage
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11-slim
 LABEL maintainer="ALERT <alexey.rubasheff@gmail.com>"
 
 WORKDIR /app
 
-COPY --from=requirements-stage /tmp/requirements.txt /app/requirements.txt
-
+COPY requirements.txt /app/
 RUN \
-    pip install --user --no-cache-dir --progress-bar=off -U pip setuptools wheel \
-    && pip install --user --no-cache-dir --progress-bar=off -r /app/requirements.txt
+    pip install --user --progress-bar=off -U pip setuptools wheel \
+    && pip install --user --progress-bar=off -r /app/requirements.txt
 
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends curl \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/*
+    && rm -rf /var/lib/apt/lists/*
 
 
 COPY entrypoint.sh /app/

@@ -6,7 +6,7 @@ authors = ["Alexey Rubaseff <alexey.rubasheff@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"  # latest tiangolo/uvicorn-gunicorn-fastapi docker image
+python = "^3.11.9"  # latest tiangolo/uvicorn-gunicorn-fastapi docker image
 uvicorn = "^0.30.3"
 fastapi = "^0.111.1"
 global_logger = "^0.4.2"
@@ -19,6 +19,8 @@ python-dotenv = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]
 poetry = "^1.8.3"
+ruff = "^0.5.5"
+pre-commit = "^3.8.0"
 
 [build-system]
 requires = ["poetry-core"]
