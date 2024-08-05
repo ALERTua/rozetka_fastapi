@@ -18,7 +18,7 @@ python-dotenv = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]
 poetry = "^1.8.3"
-ruff = "^0.5.5"
+ruff = "^0.5.6"
 pre-commit = "^3.8.0"
 
 [build-system]
