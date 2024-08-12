@@ -19,7 +19,7 @@ uvicorn = "^0.30.5"
 
 [tool.poetry.group.dev.dependencies]
 poetry = "^1.8.3"
-ruff = "^0.5.5"
+ruff = "^0.5.7"
 pre-commit = "^3.8.0"
 
 [build-system]
