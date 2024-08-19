@@ -14,7 +14,7 @@ aiohttp-retry = "^2.8.3"
 cashews = {extras = ["redis"], version = "^7.1.0"}
 pydantic = "^2.8.2"
 python-dotenv = "^1.0.1"
-uvicorn = "^0.30.5"
+uvicorn = "^0.30.6"
 
 
 [tool.poetry.group.dev.dependencies]
