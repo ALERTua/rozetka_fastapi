@@ -11,7 +11,7 @@ fastapi = "^0.112.0"
 global_logger = "^0.4.2"
 influxdb-client = {extras = ["async"], version = "^1.45.0"}
 aiohttp-retry = "^2.8.3"
-cashews = {extras = ["redis"], version = "^7.2.0"}
+cashews = {extras = ["redis"], version = "^7.3.1"}
 pydantic = "^2.8.2"
 python-dotenv = "^1.0.1"
 uvicorn = "^0.30.6"

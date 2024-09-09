@@ -264,13 +264,13 @@ redis = ["redis (>=2.10.5)"]
 
 [[package]]
 name = "cashews"
-version = "7.2.0"
+version = "7.3.1"
 description = "cache tools with async power"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "cashews-7.2.0-py3-none-any.whl", hash = "sha256:31a203b30d6162ea671268fda9012ebc2053e669761a3112906aa7ec988f09eb"},
-    {file = "cashews-7.2.0.tar.gz", hash = "sha256:55be8f13845a17fc859c09b53d2105dd236340a5571610820b592e58835f62c2"},
+    {file = "cashews-7.3.1-py3-none-any.whl", hash = "sha256:c31efcc8953a54ef9d9bc5046ee902a4f70c9b2f985d352da2e0dbe9dedcebdf"},
+    {file = "cashews-7.3.1.tar.gz", hash = "sha256:1e453b38bdafbc3f66650f293b0261bd1035cc97a961b7f9e5c09f8e23228c3e"},
 ]
 
 [package.dependencies]
@@ -282,7 +282,7 @@ diskcache = ["diskcache (>=5.0.0)"]
 lint = ["mypy (>=1.5.0)", "types-redis"]
 redis = ["redis (>=4.3.1,!=5.0.1)"]
 speedup = ["bitarray (<3.0.0)", "hiredis", "xxhash (<4.0.0)"]
-tests = ["hypothesis (==6.111.0)", "pytest (==8.3.2)", "pytest-asyncio (==0.23.7)", "pytest-cov (==5.0.0)", "pytest-rerunfailures (==14.0)"]
+tests = ["hypothesis (==6.111.2)", "pytest (==8.3.2)", "pytest-asyncio (==0.24.0)", "pytest-cov (==5.0.0)", "pytest-rerunfailures (==14.0)"]
 
 [[package]]
 name = "certifi"
@@ -2249,4 +2249,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "ef4ab153783ac67ddd815215e28571507afbf8eeaf18db0e7282424735005930"
+content-hash = "686611f00583b3196b676fddbb075271ba6aa75e0d71b558c2b1dfd59cd5522d"
