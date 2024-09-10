@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-fastapi = "^0.112.0"
+fastapi = "^0.114.0"
 global_logger = "^0.4.2"
 influxdb-client = {extras = ["async"], version = "^1.45.0"}
 aiohttp-retry = "^2.8.3"
