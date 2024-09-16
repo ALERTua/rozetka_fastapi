@@ -716,13 +716,13 @@ pgp = ["gpg"]
 
 [[package]]
 name = "fastapi"
-version = "0.112.4"
+version = "0.114.2"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "fastapi-0.112.4-py3-none-any.whl", hash = "sha256:6d4f9c3301825d4620665cace8e2bc34e303f61c05a5382d1d61a048ea7f2f37"},
-    {file = "fastapi-0.112.4.tar.gz", hash = "sha256:b1f72e1f72afe7902ccd639ba320abb5d57a309804f45c10ab0ce3693cadeb33"},
+    {file = "fastapi-0.114.2-py3-none-any.whl", hash = "sha256:44474a22913057b1acb973ab90f4b671ba5200482e7622816d79105dcece1ac5"},
+    {file = "fastapi-0.114.2.tar.gz", hash = "sha256:0adb148b62edb09e8c6eeefa3ea934e8f276dabc038c5a82989ea6346050c3da"},
 ]
 
 [package.dependencies]
@@ -2281,4 +2281,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "ef4ab153783ac67ddd815215e28571507afbf8eeaf18db0e7282424735005930"
+content-hash = "93c7c6d5f1d806aaf2519c8f3c6279312097eebcd2510b9b0e6940d945cd28f7"
