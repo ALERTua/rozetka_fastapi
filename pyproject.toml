@@ -1,27 +1,21 @@
-[tool.poetry]
+[project]
 name = "rozetka-fastapi"
 version = "0.1.0"
-description = ""
-authors = ["Alexey Rubaseff <alexey.rubasheff@gmail.com>"]
-readme = "README.md"
+description = "Add your description here"
+requires-python = ">=3.12,!=3.13"
+dependencies = [
+    "aiohttp-retry>=2.9.0",
+    "cashews[redis]>=7.3.2",
+    "fastapi>=0.115.4",
+    "global-logger>=0.4.2",
+    "influxdb-client[async]>=1.47.0",
+    "pydantic>=2.9.2",
+    "python-dotenv>=1.0.1",
+    "uvicorn>=0.32.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-fastapi = "^0.112.0"
-global_logger = "^0.4.2"
-influxdb-client = {extras = ["async"], version = "^1.45.0"}
-aiohttp-retry = "^2.8.3"
-cashews = {extras = ["redis"], version = "^7.2.0"}
-pydantic = "^2.8.2"
-python-dotenv = "^1.0.1"
-uvicorn = "^0.30.6"
-
-
-[tool.poetry.group.dev.dependencies]
-poetry = "^1.8.3"
-ruff = "^0.6.1"
-pre-commit = "^3.8.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "pre-commit>=4.0.1",
+    "ruff>=0.7.1",
+]
