@@ -29,6 +29,8 @@ ENV \
     VIRTUAL_ENV="$APP_DIR/.venv" \
     UV_CACHE_DIR="$APP_DIR/.uv_cache"
 
+ENV PYTHONPATH="$VIRTUAL_ENV/bin:$PYTHONPATH"
+
 RUN --mount=type=cache,target=$UV_CACHE_DIR \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
