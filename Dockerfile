@@ -10,6 +10,7 @@ ENV \
     UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
     UV_FROZEN=1 \
+    UV_CACHE_DIR=.uv_cache \
     # Python
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -25,22 +26,16 @@ ENV \
 
 WORKDIR $APP_DIR
 
-ENV \
-    VIRTUAL_ENV="$APP_DIR/.venv" \
-    UV_CACHE_DIR="$APP_DIR/.uv_cache"
-
-ENV PYTHONPATH="$VIRTUAL_ENV/bin:$PYTHONPATH"
-
 RUN --mount=type=cache,target=$UV_CACHE_DIR \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --no-install-project --no-dev
 
-COPY . ./$SOURCE_DIR_NAME/
+COPY $SOURCE_DIR_NAME $SOURCE_DIR_NAME
 
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
         CMD curl localhost:${PORT}/health || exit 1
 
 ENTRYPOINT []
 
-CMD ["uv", "run", "uvicorn $SOURCE_DIR_NAME.__main__:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD uv run uvicorn $SOURCE_DIR_NAME.__main__:app --host 0.0.0.0 --port ${PORT-8000}

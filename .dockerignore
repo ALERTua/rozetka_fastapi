@@ -23,6 +23,7 @@ ruff.toml
 docker-compose.yml
 Dockerfile
 .docker
+.dockerenv
 .dockerignore
 
 # Byte-compiled / optimized / DLL files
