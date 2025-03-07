@@ -1,8 +1,8 @@
 [project]
 name = "rozetka-fastapi"
-version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.12,!=3.13"
+version = "0"
+description = "Rozetka.ua Python FastAPI"
+requires-python = "==3.13.*"
 dependencies = [
     "aiohttp-retry>=2.9.0",
     "cashews[redis]>=7.3.2",
@@ -19,3 +19,11 @@ dev = [
     "pre-commit>=4.0.1",
     "ruff>=0.7.1",
 ]
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 88
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 88
+max-line-length = 120

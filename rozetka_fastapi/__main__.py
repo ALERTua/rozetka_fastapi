@@ -6,7 +6,6 @@ from typing import NamedTuple
 from aiohttp_retry import ExponentialRetry, RetryClient
 from cashews import cache
 
-# noinspection PyPackageRequirements
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, status
 from global_logger import Log
@@ -143,7 +142,6 @@ class HealthCheck(BaseModel):
     summary="Perform a Health Check",
     response_description="Return HTTP Status Code 200 (OK)",
     status_code=status.HTTP_200_OK,
-    response_model=HealthCheck,
 )
 def get_health() -> HealthCheck:
     """

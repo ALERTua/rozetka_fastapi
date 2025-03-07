@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS production
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim AS production
 
 LABEL maintainer="ALERT <alexey.rubasheff@gmail.com>"
 
@@ -10,6 +10,7 @@ ENV \
     UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
     UV_FROZEN=1 \
+    UV_NO_PROGRESS=true \
     UV_CACHE_DIR=.uv_cache \
     # Python
     PYTHONUNBUFFERED=1 \

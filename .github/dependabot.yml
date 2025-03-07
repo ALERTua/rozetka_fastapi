@@ -12,5 +12,4 @@ updates:
     ignore:
       - dependency-name: "ruff"
       - dependency-name: "pytest"
-      - dependency-name: "poetry"
       - dependency-name: "pre-commit"
