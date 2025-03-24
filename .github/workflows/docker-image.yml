@@ -5,8 +5,12 @@ on:
   push:
     branches: [ "main" ]
     paths-ignore:
-      - "script/**"
-      - "*.md"
+      - "script/"
+      - "**/*.md"
+      - "**/*.rst"
+      - "tests/"
+      - ".pre-commit-config.yaml"
+      - ".github/"
 
   pull_request:
     branches: [ "main" ]
