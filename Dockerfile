@@ -2,9 +2,6 @@ FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim AS production
 
 LABEL maintainer="ALERT <alexey.rubasheff@gmail.com>"
 
-ENV PORT=8000
-EXPOSE $PORT
-
 ENV \
     # uv
     UV_COMPILE_BYTECODE=1 \
@@ -22,8 +19,8 @@ ENV \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
     # app
     APP_DIR=/app \
-    SOURCE_DIR_NAME=rozetka_fastapi
-
+    SOURCE_DIR_NAME=rozetka_fastapi \
+    PORT=8000
 
 WORKDIR $APP_DIR
 
@@ -34,9 +31,11 @@ RUN --mount=type=cache,target=$UV_CACHE_DIR \
 
 COPY $SOURCE_DIR_NAME $SOURCE_DIR_NAME
 
+EXPOSE $PORT
+
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
         CMD curl localhost:${PORT}/health || exit 1
 
 ENTRYPOINT []
 
-CMD uv run uvicorn $SOURCE_DIR_NAME.__main__:app --host 0.0.0.0 --port ${PORT-8000}
+CMD uv run uvicorn $SOURCE_DIR_NAME.__main__:app --host 0.0.0.0 --port ${PORT}
