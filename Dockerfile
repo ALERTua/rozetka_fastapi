@@ -34,7 +34,7 @@ COPY $SOURCE_DIR_NAME $SOURCE_DIR_NAME
 EXPOSE $PORT
 
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
-        CMD curl localhost:${PORT}/health || exit 1
+        CMD python -c "import urllib.request as u; u.urlopen('http://127.0.0.1:${PORT}/health', timeout=5)"
 
 ENTRYPOINT []
 
