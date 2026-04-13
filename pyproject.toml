@@ -4,7 +4,7 @@ version = "0"
 description = "Rozetka.ua Python FastAPI"
 requires-python = "==3.13.*"
 dependencies = [
-    "aiohttp-retry>=2.9.0",
+    "aiohttp-retry>=2.9.1",
     "cashews[redis]>=7.5.0",
     "fastapi>=0.115.12",
     "global-logger>=0.4.2",
