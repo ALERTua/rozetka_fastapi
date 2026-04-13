@@ -2,22 +2,22 @@
 name = "rozetka-fastapi"
 version = "0"
 description = "Rozetka.ua Python FastAPI"
-requires-python = "==3.13.*"
+requires-python = "==3.14.*"
 dependencies = [
-    "aiohttp-retry>=2.9.0",
-    "cashews[redis]>=7.3.2",
-    "fastapi>=0.115.12",
-    "global-logger>=0.4.2",
-    "influxdb-client[async]>=1.47.0",
-    "pydantic>=2.9.2",
-    "python-dotenv>=1.0.1",
-    "uvicorn>=0.32.0",
+    "aiohttp-retry",
+    "cashews[redis]",
+    "fastapi",
+    "global-logger",
+    "influxdb-client[async]",
+    "pydantic",
+    "python-dotenv",
+    "uvicorn",
 ]
 
 [dependency-groups]
 dev = [
-    "pre-commit>=4.2.0",
-    "ruff>=0.11.2",
+    "pre-commit",
+    "ruff",
 ]
 
 [tool.ruff.format]

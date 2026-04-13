@@ -35,14 +35,14 @@ jobs:
 #          git config --global core.symlinks true
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 #        with:
 #          submodules: recursive  # https://github.com/actions/checkout/issues/2080
 #          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Docker metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
 #            docker.io/${{ github.repository }}
           images: |
