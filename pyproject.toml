@@ -6,7 +6,7 @@ requires-python = "==3.13.*"
 dependencies = [
     "aiohttp-retry>=2.9.0",
     "cashews[redis]>=7.5.0",
-    "fastapi>=0.115.12",
+    "fastapi>=0.135.3",
     "global-logger>=0.4.2",
     "influxdb-client[async]>=1.50.0",
     "pydantic>=2.9.2",
